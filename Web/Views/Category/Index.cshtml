@@ -1,0 +1,48 @@
+﻿@using Model.Models
+@model List<Category>
+
+<div class="container">
+
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2>Category</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-secondary"><i class="bi bi-plus-circle"></i> Add New Category</a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-primary">
+        <thead>
+            <tr>
+            <th>
+                Category Name
+            </th>
+            <th>
+                Display Order
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (Category m in Model)
+            {
+                <tr>
+                    <td>
+                        @m.Name
+                    </td>
+                    <td>
+                        @m.DisplayOrder
+                    </td>
+                    <td>
+                        <div class="w-75 btnbtn-group" role="group">
+                            <a asp-controller="Category" asp-action="Update" asp-route-categoryId="@m.Id" class="btn btn-warning mx-2"><i class="bi bi-pencil"></i> Update</a>
+                            <a asp-controller="Category" asp-action="Delete" asp-route-id="@m.Id" class="btn btn-danger mx-2"><i class="bi bi-eraser"></i> Delete</a>
+                        </div>                                              @* asp-route-(nama parameter di action tujuan) *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
