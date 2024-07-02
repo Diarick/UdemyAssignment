@@ -4,17 +4,12 @@ using Model.Models;
 
 namespace DataAccess.Repositories
 {
-    public class CategoryRepository : BaseTransactRepository<Category>
+    public class ProductRepository : BaseTransactRepository<Product>
     {
         private readonly UdemyAssignmentDBContext _dbContext;
-        public CategoryRepository(UdemyAssignmentDBContext dBContext) : base(dBContext)
+        public ProductRepository(UdemyAssignmentDBContext dBContext) : base(dBContext)
         {
             _dbContext = dBContext;
-        }
-
-        public void Update(Category obj)
-        {
-            _dbContext.Update(obj);
         }
     }
 }

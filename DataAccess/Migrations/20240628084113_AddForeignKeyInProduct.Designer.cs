@@ -3,6 +3,7 @@ using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(UdemyAssignmentDBContext))]
-    partial class UdemyAssignmentDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240628084113_AddForeignKeyInProduct")]
+    partial class AddForeignKeyInProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,9 +68,6 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<double>("ListPrice")
                         .HasColumnType("float");
 
@@ -98,7 +98,6 @@ namespace DataAccess.Migrations
                             CategoryID = 1,
                             Description = "Desc 1",
                             ISBN = "DN000201203",
-                            ImageUrl = "",
                             ListPrice = 99000.0,
                             Price = 90000.0,
                             Price100 = 80000.0,
@@ -112,7 +111,6 @@ namespace DataAccess.Migrations
                             CategoryID = 1,
                             Description = "Desc 2",
                             ISBN = "DN050241211",
-                            ImageUrl = "",
                             ListPrice = 80000.0,
                             Price = 75000.0,
                             Price100 = 60000.0,

@@ -1,0 +1,90 @@
+﻿@using Model.Models
+@model List<Product>
+
+<div class="container">
+
+    <div class="row pt-4 pb-3">
+        <div class="col-6">
+            <h2>Product</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Product" asp-action="Create" class="btn btn-secondary"><i class="bi bi-plus-circle"></i> Add New Product</a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-primary">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    ISBN
+                </th>
+                <th>
+                    Author
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    List Price
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Price(50+)
+                </th>
+                <th>
+                    Price(100+)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Product m in Model)
+            {
+                <tr>
+                    <td>
+                        @m.Title
+                    </td>
+                    <td>
+                        @m.Description
+                    </td>
+                    <td>
+                        @m.ISBN
+                    </td>
+                    <td>
+                        @m.Author
+                    </td>
+                    <td>
+                        @m.Category.Name
+                    </td>
+                    <td>
+                        @m.ListPrice
+                    </td>
+                    <td>
+                        @m.Price
+                    </td>
+                    <td>
+                        @m.Price50
+                    </td>
+                    <td>
+                        @m.Price100
+                    </td>
+                    <td>
+                        <div class="w-75 btnbtn-group" role="group">
+                            <a asp-controller="Product" asp-action="Update" asp-route-ProductId="@m.Id" class="btn btn-warning mx-2"><i class="bi bi-pencil"></i> Update</a>
+                            <a asp-controller="Product" asp-action="Delete" asp-route-id="@m.Id" class="btn btn-danger mx-2"><i class="bi bi-eraser"></i> Delete</a>
+                        </div>                                              @* asp-route-(nama parameter di action tujuan) *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
