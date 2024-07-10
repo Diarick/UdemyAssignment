@@ -1,11 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model.Models
 {
@@ -39,7 +34,7 @@ namespace Model.Models
         public int CategoryID {  get; set; }
         [ForeignKey(nameof(CategoryID))]
         [ValidateNever]
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
         [ValidateNever]
         public string? ImageUrl { get; set; }
     }

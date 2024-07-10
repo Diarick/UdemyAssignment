@@ -1,5 +1,6 @@
 ﻿using DataAccess.Data;
 using DataAccess.Repositories.IRepositories;
+using Microsoft.EntityFrameworkCore;
 using Model.Models;
 
 namespace DataAccess.Repositories
@@ -10,6 +11,11 @@ namespace DataAccess.Repositories
         public ProductRepository(UdemyAssignmentDBContext dBContext) : base(dBContext)
         {
             _dbContext = dBContext;
+        }
+        public IEnumerable<Product> GetAll(string IncludeProperties)
+        {
+            IEnumerable<Product> Query = _dbSet.Include(IncludeProperties);
+            return Query.ToList();
         }
     }
 }

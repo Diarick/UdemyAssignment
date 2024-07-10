@@ -1,6 +1,6 @@
 ﻿@model ProductViewModel
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
         <div class="row pb-2">
             <h2 class="text-primary">Create Product</h2>
@@ -52,6 +52,10 @@
             <label asp-for="product.Price100"></label>
             <input asp-for="product.Price100" class="form-control" />
             <span asp-validation-for="product.Price100" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="product.ImageUrl"></label>
+            <input type="file" class="form-control" />
         </div>
         <div class="row">
             <div class="col-6">

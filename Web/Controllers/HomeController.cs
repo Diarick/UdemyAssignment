@@ -1,3 +1,5 @@
+using DataAccess.Data;
+using DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Model.Models;
 using System.Diagnostics;
@@ -6,16 +8,20 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
+
+        private readonly ProductRepository _productRepository;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, UdemyAssignmentDBContext db)
         {
             _logger = logger;
+            _productRepository = new ProductRepository(db);
         }
 
         public IActionResult Index()
         {
-            return View();
+            List<Product> Products = _productRepository.GetAll().ToList();
+            return View(Products);
         }
 
         public IActionResult Privacy()
