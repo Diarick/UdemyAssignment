@@ -12,7 +12,7 @@ builder.Services.AddDbContext<UdemyAssignmentDBContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<UdemyAssignmentDBContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<UdemyAssignmentDBContext>();
 
 //Add Dependency Injection Life Time
 //start
