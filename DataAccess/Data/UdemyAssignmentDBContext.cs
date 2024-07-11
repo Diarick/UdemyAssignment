@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Model.Models;
 using System.Net.Http.Headers;
 
 namespace DataAccess.Data
 {
-    public class UdemyAssignmentDBContext : IdentityDbContext
+    public class UdemyAssignmentDBContext : IdentityDbContext<IdentityUser>
     {
         public UdemyAssignmentDBContext(DbContextOptions<UdemyAssignmentDBContext> options) : base(options)
         {
