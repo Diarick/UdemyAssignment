@@ -13,7 +13,7 @@ builder.Services.AddDbContext<UdemyAssignmentDBContext>(
 );
 
 builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<UdemyAssignmentDBContext>();
-
+builder.Services.AddRazorPages();
 //Add Dependency Injection Life Time
 //start
 //builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -34,10 +34,14 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();
