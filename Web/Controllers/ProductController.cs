@@ -5,9 +5,12 @@ using DataAccess.Repositories;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Model.Models.ViewModels;
 using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.AspNetCore.Authorization;
+using Utility;
 
 namespace Web.Controllers
 {
+    [Authorize(Roles = BaseUtility.Role_User_Admin)]
     public class ProductController : Controller
     {
         private readonly ProductRepository _productRepository;
